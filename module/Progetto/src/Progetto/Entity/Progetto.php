@@ -11,7 +11,7 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
  * @ORM\Table(name="progetti")
  * @ORM\Entity(repositoryClass="Progetti\Entity\Repository\ProgettiRepository")
  */
-class Prodotto
+class Progetto
 {
     /**
      * @var integer
@@ -42,4 +42,86 @@ class Prodotto
      * @ORM\Column(name="descrizione", type="text", nullable=true)
      */
     private $descrizione;
+    
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
+
+    /**
+     * Set codice
+     *
+     * @param string $codice
+     *
+     * @return Progetto
+     */
+    public function setCodice($codice)
+    {
+        $this->codice = $codice;
+
+        return $this;
+    }
+
+    /**
+     * Get codice
+     *
+     * @return string
+     */
+    public function getCodice()
+    {
+        return $this->codice;
+    }
+
+    /**
+     * Set utente
+     *
+     * @param string $utente
+     *
+     * @return Progetto
+     */
+    public function setUtente($utente)
+    {
+        $this->utente = $utente;
+
+        return $this;
+    }
+
+    /**
+     * Get utente
+     *
+     * @return string
+     */
+    public function getUtente()
+    {
+        return $this->utente;
+    }
+
+    /**
+     * Set descrizione
+     *
+     * @param string $descrizione
+     *
+     * @return Progetto
+     */
+    public function setDescrizione($descrizione)
+    {
+        $this->descrizione = $descrizione;
+
+        return $this;
+    }
+
+    /**
+     * Get descrizione
+     *
+     * @return string
+     */
+    public function getDescrizione()
+    {
+        return $this->descrizione;
+    }
+}
