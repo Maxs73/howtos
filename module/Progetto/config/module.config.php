@@ -35,7 +35,16 @@ return array(
                           ),
                       ),
                   ),
-              ),
+                  'nuovo' => array(
+                      'type'    => 'Segment',
+                      'options' => array(
+                          'route'    => '/nuovo',
+                          'defaults' => array(
+                              'action' => 'nuovo',
+                          ),
+                      ),
+                  ),
+            ),
           ),
 
 
@@ -61,8 +70,15 @@ return array(
         ),
     ),
     'controllers' => array(
-        'invokables' => array(
-            'Progetto\Controller\Index' => Controller\IndexController::class
+        'factories' => array(
+            'Progetto\Controller\Index' => Controller\IndexControllerFactory::class,
+        ),
+    ),
+
+    'service_manager' => array(
+        'factories' => array(
+            'Progetto\Form\ProgettoForm' => Form\ProgettoFormFactory::class,
+            'Progetto\Service\ProgettoService' => Service\ProgettoServiceFactory::class,
         ),
     ),
 

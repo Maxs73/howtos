@@ -11,11 +11,51 @@ namespace Progetto\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Progetto\Service\ProgettoService;
+use Progetto\Form\ProgettoForm;
 
 class IndexController extends AbstractActionController
 {
+
+      private $progettoService;
+      private $form;
+
+      public function __construct(ProgettoService $progettoService, ProgettoForm $progettoForm) {
+          $this->progettoService = $progettoService;
+          $this->form = $progettoForm;
+      }
     public function indexAction()
     {
         return new ViewModel();
     }
+
+    public function nuovoAction()
+    {
+        if ($this->getRequest()->isPost()) {
+            $request = $this->getRequest();
+
+            // merge dati che arrivano dalla form
+            $postData = array_merge_recursive(
+                $request->getPost()->toArray(),
+                $request->getFiles()->toArray()
+            );
+
+            $this->form->setData($postData);
+
+            if ($this->form->isValid()) {
+
+                $progetto = $this->progettoService->creaNuovoProgetto($postData);
+
+
+
+                $this->redirect()->toRoute('/progetto');
+
+            }
+        }
+
+        return new ViewModel([
+            'form' => $this->form
+        ]);
+    }
+
 }

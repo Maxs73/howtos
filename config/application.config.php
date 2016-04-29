@@ -17,8 +17,8 @@ return array(
       //'ZfcUser',
       //'ZfcUserDoctrineORM',
       //'BjyAuthorize',
-      'Application',
       'Progetto',
+      'Application',
     ),
 
     // These are various options for the listeners attached to the ModuleManager

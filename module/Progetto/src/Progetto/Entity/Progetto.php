@@ -9,7 +9,7 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
  * Progetti
  *
  * @ORM\Table(name="progetti")
- * @ORM\Entity(repositoryClass="Progetti\Entity\Repository\ProgettiRepository")
+ * @ORM\Entity(repositoryClass="Progetto\Entity\Repository\ProgettoRepository")
  */
 class Progetto
 {
@@ -32,7 +32,7 @@ class Progetto
     /**
      * @var string
      *
-     * @ORM\Column(name="nome", type="string", nullable=false)
+     * @ORM\Column(name="utente", type="string", nullable=false)
      */
     private $utente;
 
@@ -42,7 +42,7 @@ class Progetto
      * @ORM\Column(name="descrizione", type="text", nullable=true)
      */
     private $descrizione;
-    
+
     /**
      * Get id
      *
