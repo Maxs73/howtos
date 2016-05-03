@@ -13,6 +13,12 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
  */
 class Progetto
 {
+
+      public function __construct($codice, $utente, $descrizione) {
+          $this->codice = $codice;
+          $this->utente = $utente;
+          $this->descrizione = $descrizione;
+      }
     /**
      * @var integer
      *

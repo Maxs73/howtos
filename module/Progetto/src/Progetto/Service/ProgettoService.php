@@ -21,7 +21,7 @@ class ProgettoService {
         return $this->ProgettoRepository->findOneByCodice($codice);
     }
 
-    public function getListaProgetto() {
+    public function getListaProgetti() {
         return $this->ProgettoRepository->findAll();
     }
 

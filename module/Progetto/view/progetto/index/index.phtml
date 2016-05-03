@@ -1,1 +1,7 @@
-<?php echo 'ciao' ?>
+<div class="container-fluid">
+
+    <?php foreach($this->lista as $progetto) {
+        echo $this->partial('partials/progetto.phtml', ['progetto' => $progetto]);
+    } ?>
+
+</div>

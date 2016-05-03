@@ -24,10 +24,21 @@ class IndexController extends AbstractActionController
           $this->progettoService = $progettoService;
           $this->form = $progettoForm;
       }
-    public function indexAction()
-    {
-        return new ViewModel();
-    }
+
+      public function indexAction()
+      {
+          return new ViewModel([
+              'lista' => $this->progettoService->getListaProgetti()
+          ]);
+      }
+
+      public function progettoAction()
+      {
+          $progetto = $this->progettoService->getprogetto($this->params()->fromRoute('codice'));
+          return new ViewModel([
+              'progetto' => $progetto
+          ]);
+      }
 
     public function nuovoAction()
     {
@@ -48,7 +59,7 @@ class IndexController extends AbstractActionController
 
 
 
-                $this->redirect()->toRoute('/progetto');
+                $this->redirect()->toRoute('progetti');
 
             }
         }
