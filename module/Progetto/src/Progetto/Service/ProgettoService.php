@@ -52,9 +52,5 @@ class ProgettoService {
         $this->entityManager->flush();
     }
 
-    public function modifica(progetto $progetto) {
-        $this->entityManager->remove($progetto);
-        $this->entityManager->flush();
-    }
 
 }

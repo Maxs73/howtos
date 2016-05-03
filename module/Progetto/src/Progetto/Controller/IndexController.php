@@ -69,4 +69,13 @@ class IndexController extends AbstractActionController
         ]);
     }
 
+    public function eliminaAction()
+    {
+        $progetto = $this->progettoService->getprogetto($this->params()->fromRoute('codice'));
+        var_dump($this->params()->fromRoute('codice'));
+        $this->progettoService->elimina($progetto);
+
+        $this->redirect()->toRoute('progetti');
+    }
+
 }

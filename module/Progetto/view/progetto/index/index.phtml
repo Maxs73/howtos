@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<a class="btn btn-primary" href="<?=$this->url('progetti/nuovo')?>" role="button">nuovo progetto</a>
 
-    <?php foreach($this->lista as $progetto) {
-        echo $this->partial('partials/progetto.phtml', ['progetto' => $progetto]);
-    } ?>
-
-</div>
+<table class="table table-striped">
+    <tbody>
+        <?php       echo $this->partial('partials/progetto.phtml', ['progetto' => $lista]); ?>
+    </tbody>
+</table>

@@ -1,10 +1,21 @@
-<div class="col-md-3">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-        <a href="<?= $this->url('progetti/default', ['codice' => $progetto->getCodice()]) ?>"><?=$progetto->getDescrizione() ?></a>
-    </div>
-    <div class="panel-body">
-      <img src="" />
-    </div>
-  </div>
-</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Codice</th>
+            <th>Progetto</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($this->progetto as $progetto) { ?>
+        <tr>
+            <th scope="row"><?=$progetto->getCodice()?></th>
+            <td><a href="<?= $this->url('progetti/default', ['codice' => $progetto->getCodice()]) ?>"><?=$progetto->getDescrizione() ?></a></td>
+            <td>
+                <a class="btn btn-default" href="" role="button">modifica</a>
+                <a class="btn btn-default" href="<?=$this->url('progetti/elimina', ['codice' => $progetto->getCodice()])?>" role="button">elimina</a>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table

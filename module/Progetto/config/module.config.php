@@ -44,6 +44,18 @@ return array(
                           ),
                       ),
                   ),
+                  'elimina' => array(
+                      'type'    => 'Segment',
+                      'options' => array(
+                          'route'    => '/elimina/:codice',
+                          'constraints' => array(
+                              'codice' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                          ),
+                          'defaults' => array(
+                              'action' => 'elimina',
+                          ),
+                      ),
+                  ),
             ),
           ),
 
