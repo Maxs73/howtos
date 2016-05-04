@@ -14,8 +14,9 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 class Progetto
 {
 
-      public function __construct($codice, $utente, $descrizione) {
+      public function __construct($codice, $titolo, $utente, $descrizione) {
           $this->codice = $codice;
+          $this->titolo = $titolo;
           $this->utente = $utente;
           $this->descrizione = $descrizione;
       }
@@ -34,6 +35,13 @@ class Progetto
      * @ORM\Column(name="codice", type="string", nullable=false)
      */
     private $codice;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titolo", type="string", nullable=false)
+     */
+    private $titolo;
 
     /**
      * @var string
@@ -81,6 +89,30 @@ class Progetto
     public function getCodice()
     {
         return $this->codice;
+    }
+
+    /**
+     * Set titolo
+     *
+     * @param string $titolo
+     *
+     * @return Progetto
+     */
+    public function setTitolo($titolo)
+    {
+        $this->titolo = $titolo;
+
+        return $this;
+    }
+
+    /**
+     * Get titolo
+     *
+     * @return string
+     */
+    public function getTitolo()
+    {
+        return $this->titolo;
     }
 
     /**

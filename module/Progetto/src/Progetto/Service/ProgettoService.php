@@ -37,6 +37,7 @@ class ProgettoService {
     public function creaNuovoprogetto(array $dati) {
         $progetto = new progetto(
             $dati['codice'],
+            $dati['titolo'],
             $dati['utente'],
             $dati['descrizione']
         );

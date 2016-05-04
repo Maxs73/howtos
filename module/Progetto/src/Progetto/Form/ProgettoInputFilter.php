@@ -28,6 +28,15 @@ class ProgettoInputFilter extends InputFilter
             ]
         ]);
 
+        $this->add([
+            'name' => 'titolo',
+            'required' => "true",
+            'filters' => [
+                ['name' => 'StripTags'],
+                ['name' => 'StringTrim'],
+            ]
+        ]);
+
 
     }
 
