@@ -73,11 +73,48 @@ return array(
             ),
         ),
     ),
+
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => Controller\IndexController::class
         ),
     ),
+
+    'doctrine'        => [
+        'driver' => [
+            __NAMESPACE__ . '_driver' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity']
+            ],
+            'orm_default'             => [
+                'class'   => 'Doctrine\ORM\Mapping\Driver\DriverChain',
+                'drivers' => [
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                ]
+            ],
+        ],
+    ],
+
+    // ACL
+    // ACL
+    'bjyauthorize' => [
+        'guards' => [
+            'BjyAuthorize\Guard\Controller' => [
+
+                // Pagine fornite da ZfcUser: accesso consentito a tutti
+                ['controller' => 'zfcuser', 'roles' => []],
+
+                // Pagine fornite dal controller Index: accesso consentito a tutti
+                ['controller' => 'Application\Controller\Index', 'roles' => []],
+
+                // Pagine area admin: accesso consentito solo agli utenti admin
+                ['controller' => 'ZfcAdmin\Controller\AdminController', 'roles' => ['admin']],
+
+            ],
+        ],
+    ],
+
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,

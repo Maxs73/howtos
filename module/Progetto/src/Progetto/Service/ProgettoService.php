@@ -7,10 +7,13 @@ class ProgettoService {
 
     private $entityManager;
     private $ProgettoRepository;
+    private $userLogged;
 
-    public function __construct($entityManager) {
+
+    public function __construct($entityManager, $userLogged) {
         $this->entityManager = $entityManager;
         $this->ProgettoRepository = $entityManager->getRepository('Progetto\Entity\Progetto');
+        $this->userLogged = $userLogged;
     }
 
     public function getProgettoInEvidenza() {
@@ -35,17 +38,23 @@ class ProgettoService {
     }
 
     public function creaNuovoprogetto(array $dati) {
-        $progetto = new progetto(
-            $dati['codice'],
-            $dati['titolo'],
-            $dati['utente'],
-            $dati['descrizione']
-        );
+      if ($this->userLogged->hasIdentity()) {
+          echo $this->userLogged->getIdentity()->getEmail();
 
-        $this->entityManager->persist($progetto);
-        $this->entityManager->flush();
+          $progetto = new progetto(
+              $dati['codice'],
+              $dati['titolo'],
+              $dati['utente' =>   $this->userLogged->getIdentity()->getEmail() ],
+              $dati['descrizione']
+          );
 
-        return $progetto;
+          $this->entityManager->persist($progetto);
+          $this->entityManager->flush();
+
+          return $progetto;
+      }
+      echo 'nessun utente';
+
     }
 
     public function elimina(progetto $progetto) {
