@@ -27,6 +27,21 @@ class ProgettoForm extends Form
         ]);
 
         $this->add([
+            'name'       => 'titolo',
+            'type'       => 'Zend\Form\Element\Text',
+            'options' => array(
+                 'label' => 'Titolo',
+                 'label_attributes' => array(
+                     'class' => 'control-label',
+                 ),
+            ),
+            'attributes' => [
+                'id'       => 'titolo',
+                'class'    => 'form-control'
+            ]
+        ]);
+
+        $this->add([
             'name'       => 'utente',
             'type'       => 'Zend\Form\Element\Text',
             'options' => array(
