@@ -8,12 +8,14 @@ class ProgettoService {
     private $entityManager;
     private $ProgettoRepository;
     private $userLogged;
+    private $userMail;
 
 
     public function __construct($entityManager, $userLogged) {
         $this->entityManager = $entityManager;
         $this->ProgettoRepository = $entityManager->getRepository('Progetto\Entity\Progetto');
         $this->userLogged = $userLogged;
+        $this->userMail = $this->userLogged->getIdentity()->getEmail();
     }
 
     public function getProgettoInEvidenza() {
@@ -37,6 +39,13 @@ class ProgettoService {
         return $Progetto;
     }
 
+
+    public function getUserProgetti() {
+      $userMail = [];
+      $userMail[] = $this->userMail;
+      return $userMail;
+    }
+
     public function creaNuovoprogetto(array $dati) {
       if ($this->userLogged->hasIdentity()) {
           echo $this->userLogged->getIdentity()->getEmail();
@@ -44,7 +53,7 @@ class ProgettoService {
           $progetto = new progetto(
               $dati['codice'],
               $dati['titolo'],
-              $dati['utente' =>   $this->userLogged->getIdentity()->getEmail() ],
+              $this->userLogged->getIdentity()->getEmail(),
               $dati['descrizione']
           );
 

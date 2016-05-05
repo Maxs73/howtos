@@ -42,6 +42,7 @@ class IndexController extends AbstractActionController
 
     public function nuovoAction()
     {
+
         if ($this->getRequest()->isPost()) {
             $request = $this->getRequest();
 
@@ -67,6 +68,7 @@ class IndexController extends AbstractActionController
         return new ViewModel([
             'form' => $this->form
         ]);
+        echo $this->progettoService->getUserProgetti();
     }
 
     public function eliminaAction()
@@ -77,5 +79,6 @@ class IndexController extends AbstractActionController
 
         $this->redirect()->toRoute('progetti');
     }
+
 
 }

@@ -6,7 +6,7 @@ use Zend\Form\Form;
 
 class ProgettoForm extends Form
 {
-    public function __construct()
+    public function __construct($user)
     {
         parent::__construct('progetto');
         $this->setAttribute('method', 'post');
@@ -43,12 +43,13 @@ class ProgettoForm extends Form
 
         $this->add([
             'name'       => 'utente',
-            'type'       => 'Zend\Form\Element\Text',
+            'type'       => 'Zend\Form\Element\Select',
             'options' => array(
                  'label' => 'Utente',
                  'label_attributes' => array(
                      'class' => 'control-label',
                  ),
+                 'value_options' => $user,
             ),
             'attributes' => [
                 'id'       => 'utente',

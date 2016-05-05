@@ -20,7 +20,7 @@ class ProgettoFormFactory implements FactoryInterface
         //$listaCategorie = $progettoService->getArrayCategorie();
 
         $inputFilter = new ProgettoInputFilter();//rimanda ai filter
-        $form = new ProgettoForm();//carica in un array la lista delle categorie nella combo
+        $form = new ProgettoForm($progettoService->getUserProgetti());//carica in un array la lista delle categorie nella combo
 
         $form->setInputFilter($inputFilter);//applica i filter alla form
 

@@ -30,7 +30,7 @@ class ProgettoInputFilter extends InputFilter
 
         $this->add([
             'name' => 'utente',
-            'required' => "true",
+            'required' => "false",
             'filters' => [
                 ['name' => 'StripTags'],
                 ['name' => 'StringTrim'],
